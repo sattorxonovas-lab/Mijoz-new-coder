@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telegram Mini App Starter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="css/storage.css">
+</head>
+
+<body>
+  <div id="loadingOverlay" class="loading-overlay" aria-live="polite" aria-label="Serverga ulanmoqda">
+    <div class="loading-card">
+      <div class="loading-icon" aria-hidden="true"></div>
+      <h2 class="loading-title">Serverga ulanmoqda...</h2>
+      <p class="loading-subtitle">Bot va server bilan bog‘lanish jarayoni davom etmoqda. Bir necha soniya kuting.</p>
+      <div class="loading-dots" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen">
+<!-- BOG' MAYDONI -->
+<section class="garden-view">
+  
+  <!-- 1. Asosiy Daraxt Kartasi -->
+  <div class="garden-card">
+    <div class="garden-preview">
+      <img src="garden.png" alt="Meva Garden" />
+      <div class="profile-badge" id="profileBadge" aria-label="Profile">
+        <span class="profile-badge__initial" id="profileInitial">U</span>
+      </div>
+      <div class="apple-cluster" aria-hidden="true">
+        <img class="apple-cluster__item apple-cluster__item--1" src="olma2.png" alt="Olma" />
+        <img class="apple-cluster__item apple-cluster__item--2" src="olma2.png" alt="Olma" />
+        <img class="apple-cluster__item apple-cluster__item--3" src="olma2.png" alt="Olma" />
+        <img class="apple-cluster__item apple-cluster__item--4" src="olma2.png" alt="Olma" />
+        <img class="apple-cluster__item apple-cluster__item--5" src="olma2.png" alt="Olma" />
+      </div>
+      <div class="fruit-total" id="totalFruitDisplay">
+        <img class="fruit-total__icon" src="olma2.png" alt="Olma" />
+        <span id="topFruitCount">0</span>
+      </div>
+    </div>
+    
+    <!-- Daraxt ostidagi matn va tugmalar -->
+    <div class="garden-info">
+      <div class="garden-head">
+        <p class="eyebrow"><i class="fa-solid fa-tree"></i> Meva Garden</p>
+      </div>
+      <h1 id="mainStatusTitle">Olma Tanlandi — 15 s</h1>
+      <p id="statusText">Reklama ko‘ring va so‘ngra daraxtni sug‘oring.</p>
+      
+      <div class="garden-action-buttons">
+        <button id="adBtn" class="ad-btn">
+          <i class="fa-solid fa-rectangle-ad"></i>
+          <span id="adBtnText">Reklama 1/0</span>
+        </button>
+        <button id="waterBtn" class="water-btn" disabled>
+          <i class="fa-solid fa-faucet-drip"></i>
+          Sug‘orish
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Mevalar Ro'yxati Bloki -->
+  <div class="fruit-catalog-card">
+    <p class="catalog-title"><i class="fa-solid fa-basket-shopping"></i> Meva turini tanlang:</p>
+    <div class="fruit-management-grid">
+      
+      <!-- 1. Olma -->
+      <div class="fruit-selection-item active" data-fruit-id="1">
+        <div class="fruit-item-header">
+          <span class="fruit-item-title"><i class="fa-solid fa-apple-whole"></i> 1. Olma</span>
+          <span class="fruit-item-badge open-badge">Ochiq</span>
+        </div>
+        <p class="fruit-item-desc">Standart nav. Qiymati oddiy.</p>
+        <div class="fruit-item-meta">
+          <span><i class="fa-solid fa-play"></i> 1 Reklama</span>
+          <span><i class="fa-solid fa-droplet"></i> +5 Meva</span>
+        </div>
+      </div>
+
+      <!-- 2. Nok -->
+      <div class="fruit-selection-item locked" data-fruit-id="2">
+        <div class="fruit-item-header">
+          <span class="fruit-item-title"><i class="fa-solid fa-lock"></i> 2. Nok</span>
+
+        </div>
+        <p class="fruit-item-desc">Olma naviga qaraganda qimmatroq ma'lumotga ega.</p>
+        <div class="fruit-item-meta">
+          <span><i class="fa-solid fa-play"></i> 3 Reklama</span>
+          <span><i class="fa-solid fa-droplet"></i> +6 Meva</span>
+        </div>
+        <div class="fruit-item-lock-rule">
+          <i class="fa-solid fa-circle-nodes"></i> 2 do‘st yoki 7 ta reklama
+        </div>
+      </div>
+
+      <!-- 3. Shaftoli -->
+      <div class="fruit-selection-item locked" data-fruit-id="3">
+        <div class="fruit-item-header">
+          <span class="fruit-item-title"><i class="fa-solid fa-lock"></i> 3. Shaftoli</span>
+        </div>
+        <p class="fruit-item-desc">O‘rtacha darajadan yuqori shirin nav.</p>
+        <div class="fruit-item-meta">
+          <span><i class="fa-solid fa-play"></i> 4 Reklama</span>
+          <span><i class="fa-solid fa-droplet"></i> +7 Meva</span>
+        </div>
+        <div class="fruit-item-lock-rule dangerous-rule">
+          <i class="fa-solid fa-user-shield"></i> Faqat 3 ta referal
+        </div>
+      </div>
+
+      <!-- 4. Gilos -->
+      <div class="fruit-selection-item locked" data-fruit-id="4">
+        <div class="fruit-item-header">
+          <span class="fruit-item-title"><i class="fa-solid fa-lock"></i> 4. Gilos</span>
+          <span class="fruit-item-badge elite-badge">Oliy Nav</span>
+        </div>
+        <p class="fruit-item-desc">Eksportbop mahsulot. Shaftolidan qimmatroq.</p>
+        <div class="fruit-item-meta">
+          <span><i class="fa-solid fa-play"></i> 5 Reklama</span>
+          <span><i class="fa-solid fa-droplet"></i> +8 Meva</span>
+        </div>
+        <div class="fruit-item-lock-rule dangerous-rule">
+          <i class="fa-solid fa-user-shield"></i> Faqat 5 ta do‘st
+        </div>
+      </div>
+
+      <!-- 5. Anor -->
+      <div class="fruit-selection-item locked" data-fruit-id="5">
+        <div class="fruit-item-header">
+          <span class="fruit-item-title"><i class="fa-solid fa-lock"></i> 5. Anor</span>
+          <span class="fruit-item-badge max-badge">Eng Qimmat</span>
+        </div>
+        <p class="fruit-item-desc">Eng qimmat ma'lumotga ega maksimal foydali nav.</p>
+        <div class="fruit-item-meta">
+          <span><i class="fa-solid fa-play"></i> 6 Reklama</span>
+          <span><i class="fa-solid fa-droplet"></i> +10 Meva</span>
+        </div>
+        <div class="fruit-item-lock-rule dangerous-rule">
+          <i class="fa-solid fa-user-shield"></i> Faqat 6 ta referal
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. Referal Tizimi va Nusxa Olish Bloki -->
+  <div class="referral-system-card">
+    <div class="referral-strict-warning">
+      <div class="warning-title">
+        <i class="fa-solid fa-triangle-exclamation"></i> TIZIMNING MUTLOQ QOIDASI
+      </div>
+      <p>Siz taklif qilgan referal botga kirib, kamida <strong>3 ta reklama</strong> ko‘rmasa, u faol do‘st sifatida hisobga olinmaydi va yangi mevalar qulfdan ochilmaydi!</p>
+    </div>
+    
+    <div class="referral-link-box">
+      <div class="ref-stats">
+        <span class="ref-count-text"><i class="fa-solid fa-users"></i> Referallaringiz: <strong>0</strong> ta</span>
+      </div>
+      <div class="copy-input-container">
+        <input type="text" value="https://t.me" id="refLinkInput" readonly />
+        <button class="btn-copy-link" onclick="navigator.clipboard.writeText(document.getElementById('refLinkInput').value)"><i class="fa-solid fa-copy"></i></button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="profile-view hidden">
+  <div class="garden-card profile-card">
+
+    <div class="profile-header">
+
+      <div class="profile-avatar" id="profilePageAvatar">
+        <span class="profile-badge__initial" id="profilePageInitial">U</span>
+
+        <div class="premium-badge">
+          👑
+        </div>
+      </div>
+
+      <div class="profile-user-info">
+        <h1 id="profileName">Foydalanuvchi</h1>
+        <p class="profile-username" id="profileUsername">@telegram</p>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="profile-progress">
+
+      <div class="progress-head">
+        <span>Level 5</span>
+        <span>750 / 1000 XP</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:75%"></div>
+      </div>
+
+    </div>
+
+
+    <div class="profile-details">
+
+      <div class="profile-stat">
+        <strong id="profileApples">1250</strong>
+        <span>🍎 Jami olma</span>
+      </div>
+
+      <div class="profile-stat">
+        <strong>18</strong>
+        <span>🏆 Level</span>
+      </div>
+
+      <div class="profile-stat">
+        <strong id="profileAds">350</strong>
+        <span>📺 Reklama</span>
+      </div>
+
+      <div class="profile-stat">
+        <strong>Top 3%</strong>
+        <span>⭐ Reyting</span>
+      </div>
+
+    </div>
+
+
+    <div class="profile-info-list">
+
+      <div class="info-row">
+        <span>📅 Qo'shilgan</span>
+        <strong>2026</strong>
+      </div>
+
+      <div class="info-row">
+        <span>⚡ Status</span>
+        <strong>Faol</strong>
+      </div>
+
+      <div class="info-row">
+        <span>🎯 Missiyalar</span>
+        <strong>24 ta</strong>
+      </div>
+
+
+    </div>
+
+
+    <div class="profile-actions">
+
+      <button class="secondary">
+        ⚙️ Sozlamalar
+      </button>
+
+      <button class="secondary">
+        🎁 Bonuslar
+      </button>
+
+
+    </div>
+
+  </div>
+</section>
+
+    <section class="home-view hidden">
+      <div class="garden-card home-card">
+        <div class="garden-info">
+
+          <!-- 1. Foydalanuvchi salomlashish qismi -->
+          <div class="home-user-header">
+            <div class="user-welcome">
+              <span class="welcome-emoji">👋</span>
+              <div>
+                <h2>Assalomu alaykum!</h2>
+                <p id="homeUserName">Foydalanuvchi</p>
+              </div>
+            </div>
+            <div class="home-balance-badge">
+              <img src="olma2.png" alt="Olma" class="balance-icon" />
+              <span id="homeFruitsBadge">0</span>
+            </div>
+          </div>
+
+          <!-- 2. Kunlik Bonus (Daily Reward) -->
+          <div class="daily-reward-card">
+            <div class="reward-info">
+              <h3><i class="fas fa-gift"></i> Kunlik Bonus</h3>
+              <p>Har kuni kiring va bepul suv yoki olma oling!</p>
+            </div>
+            <button class="claim-btn" id="dailyRewardBtn">Olish</button>
+          </div>
+
+          <!-- 3. Statisika kartalari (Yangi vizual dizayn) -->
+          <div class="home-stats-grid">
+            <div class="stat-box">
+              <div class="stat-icon"><i class="fas fa-apple-alt"></i></div>
+              <div class="stat-data">
+                <strong id="homeFruits">0</strong>
+                <span>Jami Olma</span>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon"><i class="fas fa-ad"></i></div>
+              <div class="stat-data">
+                <strong id="homeAds">0</strong>
+                <span>Reklamalar</span>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon"><i class="fas fa-tint"></i></div>
+              <div class="stat-data">
+                <strong id="homeWaterEnergy">100%</strong>
+                <span>Suv zaxirasi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Kunlik Vazifalar (Tasks) -->
+          <div class="tasks-section">
+            <div class="section-title">Kunlik Vazifalar</div>
+
+            <div class="task-item">
+              <div class="task-details">
+                <i class="fab fa-telegram task-icon"></i>
+                <div>
+                  <p class="task-name">Kanalga a'zo bo'ling</p>
+                  <small class="task-reward">+5 olma</small>
+                </div>
+              </div>
+              <button class="task-btn" id="taskJoinChannel">Bajarish</button>
+            </div>
+
+            <div class="task-item">
+              <div class="task-details">
+                <i class="fas fa-video task-icon"></i>
+                <div>
+                  <p class="task-name">5 ta reklama ko'ring</p>
+                  <small class="task-reward">+10 olma</small>
+                </div>
+              </div>
+              <button class="task-btn" id="homeAdBtn">Ko'rish</button>
+            </div>
+          </div>
+
+          <!-- 5. Do'stlarni taklif qilish (Leaderboard bilan) -->
+          <div class="invite-card">
+            <div class="invite-header">
+              <div>
+                <p class="eyebrow"><i class="fas fa-users"></i> Do'stlarni taklif qilish</p>
+                <small>Top 5 taklif qilganga katta sovrin!</small>
+              </div>
+            </div>
+            <div class="invite-body">
+              <div class="invite-counter">
+                <p class="invite-label">Siz taklif qilgan do'stlar:</p>
+                <strong id="inviteCount">0</strong>
+              </div>
+              <button class="ad-btn" id="inviteFriendBtn"><i class="fas fa-user-plus"></i> Taklif qilish</button>
+            </div>
+
+            <div class="leaderboard">
+              <div class="leaderboard-title"><i class="fas fa-trophy"></i> Top 5 Taklifchi</div>
+              <ul id="leaderboardList">
+                <!-- JS orqali to'ldiriladi -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- 6. Asosiy harakat tugmasi -->
+          <div class="home-actions">
+            <button class="main-action-btn" id="homeGardenBtn">
+              <i class="fas fa-seedling"></i> Meva Gardenga o‘tish
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+<!-- OMBOR SAHIFASI -->
+<section id="storageView" class="storage-view hidden">
+
+  <div class="storage-card">
+
+    <div class="storage-header">
+      <div>
+        <span class="storage-mini">🍎 OMBOR</span>
+        <h2>Mevalar Ombori</h2>
+        <p>Yig'ilgan barcha olmalar shu yerda saqlanadi.</p>
+      </div>
+
+      <div class="storage-wallet">
+        <img src="olma2.png" class="wallet-icon" alt="Olma">
+        <span id="storageBalance">0</span>
+      </div>
+    </div>
+
+    <div class="storage-progress-card">
+
+      <div class="progress-info">
+        <span>Ombor sig'imi</span>
+        <strong>
+          <span id="storageCurrent">0</span> /
+          <span id="storageMax">500</span>
+        </strong>
+      </div>
+
+      <div class="progress-bar">
+        <div id="storageFill" class="progress-fill"></div>
+      </div>
+
+    </div>
+
+    <div class="storage-grid">
+
+      <div class="storage-box">
+        <i class="fa-solid fa-apple-whole"></i>
+        <strong id="totalApple">0</strong>
+        <span>Jami olma</span>
+      </div>
+
+      <div class="storage-box">
+        <i class="fa-solid fa-seedling"></i>
+        <strong id="treeLevel">1</strong>
+        <span>Daraxt</span>
+      </div>
+
+      <div class="storage-box">
+        <i class="fa-solid fa-droplet"></i>
+        <strong id="waterCount">0</strong>
+        <span>Suv</span>
+      </div>
+
+      <div class="storage-box">
+        <i class="fa-solid fa-gift"></i>
+        <strong id="rewardCount">0</strong>
+        <span>Mukofot</span>
+      </div>
+
+    </div>
+
+    <div class="storage-fruits">
+
+      <div class="fruit-item">
+        <img src="olma2.png" alt="Olma">
+
+        <div>
+          <strong>Olma</strong>
+          <small>Asosiy meva</small>
+        </div>
+
+        <span id="appleAmount">0</span>
+      </div>
+
+    </div>
+
+    <div class="storage-buttons">
+
+      <button class="storage-btn sell-btn">
+        <i class="fa-solid fa-coins"></i>
+        Sotish
+      </button>
+
+      <button class="storage-btn upgrade-btn">
+        <i class="fa-solid fa-arrow-up"></i>
+        Omborni kengaytirish
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" data-nav="home">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </button>
+    <button class="nav-item active" data-nav="garden">
+      <i class="fas fa-seedling"></i>
+      <span>Meva Garden</span>
+    </button>
+    <button class="nav-item" data-nav="bot">
+      <i class="fas fa-robot"></i>
+      <span>Ombor</span>
+    </button>
+    <button class="nav-item" data-nav="profile">
+      <i class="fas fa-user"></i>
+      <span>Profil</span>
+    </button>
+  </nav>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+
+</html>
