@@ -1,0 +1,1052 @@
+.garden-view,
+.profile-view {
+  display: grid;
+  gap: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.profile-card,
+.home-card {
+  min-height: auto;
+}
+
+/* =========================
+   PROFILE
+========================= */
+/* ===== HEADER ===== */
+
+.profile-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:22px;
+}
+
+.profile-avatar{
+    position:relative;
+    width:82px;
+    height:82px;
+    flex-shrink:0;
+    border-radius:24px;
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(18px);
+}
+
+.profile-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.profile-user-info{
+    flex:1;
+}
+
+.profile-user-info h1{
+    margin:0;
+    font-size:24px;
+    font-weight:700;
+    color:#fff;
+}
+
+.profile-username{
+    margin:4px 0 0;
+    font-size:14px;
+    color:rgba(255,255,255,.6);
+}
+
+/* ===== BADGES ===== */
+
+.premium-badge{
+    position:absolute;
+    right:-2px;
+    bottom:-2px;
+
+    width:24px;
+    height:24px;
+
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#facc15;
+    font-size:12px;
+    border:2px solid #111827;
+}
+
+.profile-tags{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
+    flex-wrap:wrap;
+}
+
+.tag{
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:500;
+
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.tag.premium{
+    color:#ffd54a;
+}
+
+.tag.online{
+    color:#4ade80;
+}
+
+/* ===== PROGRESS ===== */
+
+.profile-progress{
+    margin-bottom:22px;
+}
+
+.progress-head{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:rgba(255,255,255,.65);
+    margin-bottom:8px;
+}
+
+.progress-bar{
+    height:8px;
+    overflow:hidden;
+    border-radius:999px;
+    background:rgba(255,255,255,.06);
+}
+
+.progress-fill{
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg,#22c55e,#4ade80);
+}
+
+/* ===== STATS ===== */
+
+.profile-details{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:22px;
+}
+
+.profile-stat{
+    padding:18px;
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+}
+
+.profile-stat strong{
+    display:block;
+    font-size:28px;
+    color:#fff;
+    margin-bottom:6px;
+}
+
+.profile-stat span{
+    font-size:13px;
+    color:rgba(255,255,255,.6);
+}
+
+/* ===== INFO ===== */
+
+.profile-info-list{
+    display:grid;
+    gap:10px;
+    margin-bottom:22px;
+}
+
+
+.info-row span{
+    color:rgba(255,255,255,.6);
+}
+
+.info-row strong{
+    color:#fff;
+}
+
+/* ===== BUTTONS ===== */
+
+.profile-actions{
+    display:grid;
+    gap:12px;
+}
+
+.profile-actions button{
+    width:100%;
+    height:48px;
+
+    border-radius:16px;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:600px){
+
+    .profile-header{
+        gap:14px;
+    }
+
+    .profile-avatar{
+        width:70px;
+        height:70px;
+        border-radius:20px;
+    }
+
+    .profile-user-info h1{
+        font-size:20px;
+    }
+
+    .profile-stat strong{
+        font-size:24px;
+    }
+
+}
+  .home-description,
+  .storage-description {
+    margin-top: 8px;
+    color: #dbeafe;
+    line-height: 1.5;
+  }
+
+  .home-summary,
+  .storage-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .home-stat,
+  .storage-stat {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 20px;
+    padding: 16px;
+  }
+
+  .home-stat strong,
+  .storage-stat strong {
+    display: block;
+    font-size: 1.65rem;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .home-actions,
+  .storage-actions {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .invite-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 22px;
+    padding: 18px;
+    margin-top: 16px;
+  }
+
+  .invite-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .invite-body {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .invite-label {
+    margin: 0 0 6px;
+    color: #c7d2fe;
+    font-size: 0.92rem;
+  }
+
+  #inviteCount {
+    display: block;
+    font-size: 2rem;
+    margin-top: 2px;
+  }
+
+  .leaderboard {
+    margin-top: 18px;
+  }
+
+  .leaderboard-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #a5b4fc;
+    margin-bottom: 10px;
+  }
+
+  .leaderboard ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+
+  .leaderboard li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .leaderboard li strong {
+    font-size: 1rem;
+  }
+
+  .leaderboard li span {
+    color: #93c5fd;
+  }
+
+  .leaderboard li.active-item {
+    background: rgba(59, 130, 246, 0.18);
+    border-color: rgba(59, 130, 246, 0.35);
+  }
+
+  .leaderboard li .medal {
+    font-size: 1.15rem;
+    margin-right: 8px;
+  }
+
+/* ==========================================================================
+   MUTLAQ TO'G'RILANGAN INTERFEYS VA ORQA FON REJIMLARI
+   ========================================================================== */
+
+.garden-view {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Daraxt kartasi */
+.garden-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: rgba(15, 23, 42, 0.55); /* Orqa fon rasmga moslab shaffofroq qilindi */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  box-sizing: border-box;
+}
+
+/* Daraxt joylashgan ichki oyna */
+.garden-preview {
+  position: relative;
+  width: 100%;
+  height: 240px; /* Telefonlarga mos balandlik */
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0b1329; /* Daraxt orqa foni to'q va seryozniy rangga o'tkazildi */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.garden-preview > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Daraxt rasmi butun turadi, kesilmaydi */
+}
+
+/* Profil belgisi (U) */
+.profile-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.profile-badge__initial {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Hisoblagich */
+.fruit-total {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 12px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+.fruit-total__icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+#topFruitCount {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Olma klasterlari */
+.apple-cluster {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.apple-cluster__item {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.apple-cluster__item--1 { top: 25%; left: 30%; }
+.apple-cluster__item--2 { top: 28%; right: 30%; }
+.apple-cluster__item--3 { top: 46%; left: 26%; }
+.apple-cluster__item--4 { top: 50%; right: 28%; }
+.apple-cluster__item--5 { top: 38%; left: 47%; }
+
+/* Matnlar va Tugmalar qismi */
+.garden-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.garden-head .eyebrow {
+  font-size: 0.8rem;
+  color: #10b981;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.garden-info h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+#statusText {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin: 0 0 4px 0;
+}
+
+/* Bir guruhdagi tugmalar */
+.garden-action-buttons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.garden-action-buttons button {
+  flex: 1;
+  padding: 11px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.ad-btn { background: #2563eb; color: #fff; }
+.water-btn { background: #0d9488; color: #fff; }
+.garden-action-buttons button:disabled {
+  background: rgba(30, 41, 59, 0.4) !important;
+  color: #475569 !important;
+  cursor: not-allowed;
+  border: 1px solid rgba(255, 255, 255, 0.02) !important;
+}
+
+/* ==========================================================================
+   MEVALAR RO'YXATI VA REFERAL KARTALARI (ALOHIDA BLOKLAR)
+   ========================================================================== */
+
+.fruit-catalog-card, .referral-system-card {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  box-sizing: border-box;
+}
+
+.catalog-title {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.fruit-management-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fruit-selection-item {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.fruit-selection-item.active {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.fruit-selection-item.locked { opacity: 0.45; }
+
+/* ==========================================================================
+   MATNLAR USTMA-UST CHIQIShINI TO'LIQ TUZATISh
+   ========================================================================== */
+
+.fruit-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px; /* Elementlar orasida majburiy masofa qoldiradi */
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 6px;
+}
+
+.fruit-item-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1; /* Sarlavha qolgan bo'sh joyni to'liq egallaydi */
+  min-width: 0; /* Sarlavha juda uzun bo'lsa ham badgeni siqib qo'ymaydi */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agar sig'masa, matn oxiriga uchta nuqta qo'yadi */
+}
+
+/* Badge (Qimmatroq, Premium, Oliy nav yozuvlari uchun mutloq xavfsiz uslub) */
+.fruit-item-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap; /* Matn pastga tushib ketmaydi */
+  display: inline-block;
+  flex-shrink: 0; /* Ekran kichrayganda ham badge matni aslo siqilmaydi va buzilmaydi */
+  text-align: center;
+}
+
+/* Ranglar strukturasi buzilmasligi uchun */
+.open-badge { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.premium-badge { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.elite-badge { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+.max-badge { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+.fruit-item-desc { font-size: 0.75rem; color: #64748b; margin: 2px 0 6px 0; }
+.fruit-item-meta { display: flex; gap: 6px; }
+.fruit-item-meta span {
+  font-size: 0.7rem; color: #cbd5e1; background: rgba(255, 255, 255, 0.03);
+  padding: 2px 6px; border-radius: 4px; display: flex; align-items: center; gap: 4px;
+}
+
+.fruit-item-lock-rule {
+  font-size: 0.7rem; font-weight: 600; color: #f59e0b; margin-top: 6px;
+  padding-top: 4px; border-top: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex; align-items: center; gap: 4px;
+}
+.dangerous-rule { color: #f87171 !important; }
+
+/* REFERAL TIZIMI */
+.referral-strict-warning {
+  background: rgba(239, 68, 68, 0.03);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.warning-title {
+  font-size: 0.7rem; font-weight: 800; color: #f87171; margin-bottom: 4px;
+  display: flex; align-items: center; gap: 4px; text-transform: uppercase;
+}
+
+.referral-strict-warning p { font-size: 0.75rem; color: #fca5a5; line-height: 1.35; }
+
+.referral-link-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ref-count-text { font-size: 0.8rem; color: #e2e8f0; font-weight: 500; }
+.ref-count-text strong { color: #10b981; }
+
+.copy-input-container {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+.copy-input-container input {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  outline: none;
+}
+
+.btn-copy-link {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.btn-copy-link:hover { background: #059669; }
+
+.profile-badge {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.profile-badge__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-badge__initial {
+  color: #f8fafc;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.fruit-total {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #e2e8f0;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.fruit-total__icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.fruit-total span {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.garden-info .eyebrow {
+  margin: 0;
+  color: #86efac;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.garden-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.mini-count {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #dbeafe;
+  font-weight: 700;
+}
+
+.mini-count img,
+.mini-count i {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  color: #fb923c;
+}
+
+.garden-info h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.garden-info p {
+  margin: 0 0 18px;
+  color: #dbeafe;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: min(100%, 520px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px 8px 12px;
+  background: rgba(15, 23, 42, 0.92);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.nav-item {
+  border: none;
+  border-radius: 16px;
+  padding: 8px 6px;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #d1d5db;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.64rem;
+  cursor: pointer;
+  transition: box-shadow 120ms ease, background 120ms ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  outline: none;
+  appearance: none;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.nav-item:focus,
+.nav-item:focus-visible {
+  outline: none;
+}
+
+.nav-item:active {
+  transform: none;
+}
+
+.nav-item i {
+  font-size: 1.1rem;
+}
+
+.nav-item span {
+  display: block;
+  font-size: 0.62rem;
+  line-height: 1.1;
+}
+
+.nav-item.active {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.20);
+}
+
+
+/* ==========================================================================
+   YANGI HOME BO'LIMI ELEMENTLARI UCHUN CSS (KOD OXIRIGA QO'SHING)
+   ========================================================================== */
+
+/* Home User Header */
+.home-user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 14px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-welcome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.welcome-emoji {
+  font-size: 1.5rem;
+}
+
+.user-welcome h2 {
+  font-size: 0.85rem;
+  margin: 0;
+  opacity: 0.7;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.user-welcome p {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 4px 0 0 0;
+  color: #ffffff;
+}
+
+.home-balance-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.balance-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Daily Reward Card */
+.daily-reward-card {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+  padding: 16px 18px;
+  border-radius: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+}
+
+.reward-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fef08a; /* Oltin rang simon */
+}
+
+.reward-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+  color: #dbeafe;
+  line-height: 1.4;
+}
+
+.home-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.home-stats-grid .stat-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 12px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-stats-grid .stat-icon {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.home-stats-grid .stat-box:nth-child(1) .stat-icon { color: #f87171; } /* Olma qizil */
+.home-stats-grid .stat-box:nth-child(2) .stat-icon { color: #38bdf8; } /* Reklama ko'k */
+.home-stats-grid .stat-box:nth-child(3) .stat-icon { color: #60a5fa; } /* Suv ko'k */
+
+.home-stats-grid .stat-data strong {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 2px;
+  color: #f8fafc;
+}
+
+.home-stats-grid .stat-data span {
+  font-size: 0.72rem;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Tasks Section */
+.tasks-section {
+  margin-bottom: 18px;
+}
+
+.tasks-section .section-title {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 12px 14px;
+  border-radius: 18px;
+  margin-bottom: 10px;
+}
+
+.task-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.task-icon {
+  font-size: 1.4rem;
+}
+.task-item:nth-child(2) .task-icon { color: #0088cc; } /* Telegram ko'k */
+.task-item:nth-child(3) .task-icon { color: #f43f5e; } /* Video qizil */
+
+.task-name {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.task-reward {
+  display: block;
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 0.78rem;
+  margin-top: 2px;
+}
+
+.task-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.task-btn:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+/* Main Action Button */
