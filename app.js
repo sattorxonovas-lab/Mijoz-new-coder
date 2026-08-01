@@ -1,10 +1,11 @@
 const tg = window.Telegram?.WebApp;
-const getApiBase = () => {
-  const configured = (window.APP_CONFIG?.backendUrl || "").trim();
-  if (configured) return configured.replace(/\/$/, "");
-  return "";
+const getConfiguredBackendUrl = () => (window.APP_CONFIG?.backendUrl || "").trim();
+const getApiCandidates = () => {
+  const configured = getConfiguredBackendUrl();
+  const candidates = ["/api"];
+  if (configured) candidates.push(`${configured.replace(/\/$/, "")}/api`);
+  return [...new Set(candidates)];
 };
-const API = `${getApiBase()}/api`.replace(/\/api\/api$/, "/api");
 const $ = (id) => document.getElementById(id);
 
 let state = {
@@ -33,21 +34,31 @@ async function api(path, options = {}) {
     ...(options.headers || {}),
   };
 
-  const response = await fetch(`${API}${path}`, {
-    ...options,
-    headers,
-  });
+  let lastError = null;
 
-  const data = await response.json().catch(() => ({
-    ok: false,
-    error: "Server javobi noto'g'ri",
-  }));
+  for (const base of getApiCandidates()) {
+    try {
+      const response = await fetch(`${base}${path}`, {
+        ...options,
+        headers,
+      });
 
-  if (!response.ok || data.ok === false) {
-    throw new Error(data.error || "Xatolik yuz berdi");
+      const data = await response.json().catch(() => ({
+        ok: false,
+        error: "Server javobi noto'g'ri",
+      }));
+
+      if (response.ok && data.ok !== false) {
+        return data;
+      }
+
+      lastError = new Error(data.error || "Xatolik yuz berdi");
+    } catch (error) {
+      lastError = error;
+    }
   }
 
-  return data;
+  throw lastError || new Error("Serverga ulanib bo'lmadi");
 }
 
 function notify(message) {
